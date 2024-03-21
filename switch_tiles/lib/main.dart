@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:switch_tiles/StatefullColorfulTile.dart';
 
 import 'StatelessColorfulTile.dart';
 
@@ -19,14 +20,23 @@ class _PositionedTilesState extends State<PositionedTiles> {
   void initState() {
     super.initState();
     tiles = [
-      StatelessColorfulTile(),
-      StatelessColorfulTile(),
+      Padding(
+        key: UniqueKey(),
+        padding: const EdgeInsets.all(8.0),
+        child: StatefulColorfulTile(),
+      ),
+      Padding(
+        key: UniqueKey(),
+        padding: const EdgeInsets.all(8.0),
+        child: StatefulColorfulTile(),
+      ),
     ];
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
           child: Row(
