@@ -26,15 +26,17 @@ class _PositionedTilesState extends State<PositionedTiles> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Row(
-          children: tiles,
+    return MaterialApp(
+      home: Scaffold(
+        body: SafeArea(
+          child: Row(
+            children: tiles,
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.sentiment_very_satisfied),
-        onPressed: swapTiles,
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.sentiment_very_satisfied),
+          onPressed: swapTiles,
+        ),
       ),
     );
   }
