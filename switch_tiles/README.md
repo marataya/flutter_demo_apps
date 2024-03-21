@@ -1,3 +1,3 @@
 # switch_tiles
 
-![](screenshot.jpg?raw=true "Screenshot")
+![](screenshot.jpeg?raw=true "Screenshot")
