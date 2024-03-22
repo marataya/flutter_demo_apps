@@ -1,6 +1,8 @@
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'consts.dart';
 import 'input_page.dart';
 
 void main() => runApp(const BMICalculator());
@@ -23,37 +25,42 @@ class BMICalculator extends StatelessWidget {
   Widget build(BuildContext context) {
     final ColorScheme colorScheme = ColorScheme.fromSeed(
       brightness: MediaQuery.platformBrightnessOf(context),
-      seedColor: Color(0xff0a0e21),
+      seedColor: seedColor,
     );
 
-    final myTheme = ThemeData(
-        colorScheme: colorScheme,
-        scaffoldBackgroundColor: Color(0xff0a0e21),
-        textTheme: TextTheme(
-          bodyMedium: TextStyle(color: Colors.white),
-        ),
+    final myTheme = ThemeData.dark().copyWith(
+      colorScheme: colorScheme,
+      scaffoldBackgroundColor: inactiveCardColour,
+      floatingActionButtonTheme:
+          FloatingActionButtonThemeData(backgroundColor: colorScheme.secondary),
+      appBarTheme: AppBarTheme(
+        centerTitle: true,
+        color: activeCardColour,
+        foregroundColor: Colors.white
+      ),
+      iconTheme: IconThemeData(size: 80, color: Color(0xfff3f6ff)),
+      textTheme: TextTheme(
+          titleLarge: const TextStyle(fontSize: 24, color: Colors.white)),
+      sliderTheme: SliderThemeData(
+        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15)
+      ),
+      buttonTheme: ButtonThemeData(
+        buttonColor: inactiveCardColour,
+      )
     );
-
-    final myTheme1 = ThemeData.dark().copyWith(
-        colorScheme: colorScheme,
-        scaffoldBackgroundColor: Color(0xff0a0e21),
-        floatingActionButtonTheme: FloatingActionButtonThemeData(
-            backgroundColor: colorScheme.secondary),
-        appBarTheme: AppBarTheme(
-          centerTitle: true,
-        ),
-        iconTheme: IconThemeData(size: 80, color: Color(0xfff3f6ff)));
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'BMI Calculator',
-      theme: myTheme1,
+      theme: myTheme,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.onBackground,
+          // foregroundColor: Theme.of(context).colorScheme.onError,
+          // backgroundColor: Theme.of(context).colorScheme.onBackground,
+          centerTitle: true,
           title: Text(
             'BMI CALCULATOR',
-            style: TextStyle(color: Colors.white),
+            // style: TextStyle(color: Colors.white),
           ),
         ),
         body: InputPage(),
