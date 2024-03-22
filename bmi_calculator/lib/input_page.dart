@@ -1,8 +1,10 @@
+import 'package:bmi_calculator/calculator_core.dart';
 import 'package:bmi_calculator/results_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'BottomButton.dart';
 import 'IconContent.dart';
 import 'ReusableCard.dart';
 import 'consts.dart';
@@ -84,7 +86,7 @@ class _InputPageState extends State<InputPage> {
                       children: [
                         Text(
                           height.toString(),
-                          style: numberTextStyle,
+                          style: bigassTextStyle,
                         ),
                         Text(
                           'cm',
@@ -116,7 +118,7 @@ class _InputPageState extends State<InputPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('WEIGHT', style: textStyle1),
-                            Text(weight.toString(), style: numberTextStyle),
+                            Text(weight.toString(), style: bigassTextStyle),
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -148,7 +150,7 @@ class _InputPageState extends State<InputPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('AGE', style: textStyle1),
-                            Text(age.toString(), style: numberTextStyle),
+                            Text(age.toString(), style: bigassTextStyle),
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -174,25 +176,20 @@ class _InputPageState extends State<InputPage> {
                         ))),
               ],
             )),
-        GestureDetector(
-          onTap: () {
+        BottomButton(
+          onTapCallback: () {
+            var calc = CalculatorCore(height, weight);
             Navigator.push(context, MaterialPageRoute(
-                builder: (context) => ResultsPage()
+                builder: (context) => ResultsPage(bmi: calc.calculateBMI(), textResult: calc.getResult(),)
             ));
           },
-          child: Container(
-            alignment: Alignment.center,
-            child: Text('CALCULATE', style: numberTextStyle),
-            color: bottomContainerColour,
-            margin: EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: bottomContainerHeight,
-          ),
+          buttonTitle: 'CALCULATE',
         )
       ],
     );
   }
 }
+
 
 class RoundIconButton extends StatelessWidget {
   const RoundIconButton(

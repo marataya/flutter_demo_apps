@@ -10,10 +10,18 @@ const activeCardColour = Color(0xff1d1e33);
 const inactiveCardColour = Color(0xff111328);
 const textColor = Color(0xff8d8e98);
 const roundIconButtonColor = Color(0xff4c4cf5e);
-const numberTextStyle = TextStyle(
+
+const bigassTextStyle = TextStyle(
   fontSize: 50.0,
+  fontWeight: FontWeight.w900,
+);
+
+const resultTextStyle = TextStyle(
+  fontSize: 30.0,
+  color: Color(0xff00ff00),
   fontWeight: FontWeight.w900,
 );
 
 const textStyle1 = TextStyle(fontSize: 18, color: textColor);
 const cardTextStyle1 = TextStyle(fontSize: 20, color: Color(0xff));
+const kBMITextStyle = TextStyle(fontSize: 100, color: Color(0xffff00ff));
